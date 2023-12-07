@@ -3,58 +3,86 @@ import { useParams } from "react-router-dom";
 import "./Movie.css";
 
 const Movie = () => {
-  const [data, setData] = useState({});
+  const [movieData, setMovieData] = useState({});
+  const [castingData, setCastingData] = useState([]);
   const { id } = useParams();
 
+  if (castingData.length > 0) {
+    castingData.length = 10;
+  }
+
   useEffect(() => {
-    const fetchData = async () => {
+    const movieFetch = async () => {
       const response = await fetch(
         `https://api.themoviedb.org/3/movie/${id}?api_key=4d12b2b226af3e650897e7b25db29466&language=fr-FR`
       );
 
       const responseApi = await response.json();
-      setData(responseApi);
-      console.log(responseApi);
+      setMovieData(responseApi);
     };
 
-    fetchData();
+    const castingFetch = async () => {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=4d12b2b226af3e650897e7b25db29466&language=fr-FR`
+      );
+      const responseApi = await response.json();
+      setCastingData(responseApi.cast);
+      console.log(responseApi.cast);
+    };
+    castingFetch();
+    movieFetch();
   }, [id]);
 
   return (
     <div>
       <div className="movie-container">
-        <span>title</span>
-        <div className="movie-links">
-          <ul>
+        <h1 className="movie-title">{movieData.original_title}</h1>
+        <div>
+          <ul className="movie-links">
             <li>
               <a href="">Fiche</a>
             </li>
             <li>
-              <a href="">Casting</a>
+              <a href="#casting">Casting</a>
             </li>
             <li>
               <a href="">Films Similaires</a>
             </li>
           </ul>
         </div>
-        <div>
+        <div className="movie-general-container">
           <img
-            src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`}
+            className="movie-image"
+            src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}
             alt=""
           />
           <div className="movie-description">
-            <span>Date de sortie</span>
-            <span>Casting</span>
-            <span>
-              Synopsis : Lorem ipsum dolor sit amet, consectetur adipiscing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-              dolor in reprehenderit in voluptate velit esse cillum dolore eu
-              fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est
-              laborum.
-            </span>
+            <div>Date de sortie : {movieData.release_date}</div>
+            <div>
+              Casting :{" "}
+              {castingData.map((item) => {
+                return `${item.name}, `;
+              })}
+            </div>
+            <div>
+              <strong>Synopsis</strong>
+              <div>{movieData.overview}</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h1 id="casting" className="casting-title">
+            Casting
+          </h1>
+          <div className="casting-images">
+            {castingData.map((item) => {
+              return (
+                <img
+                  src={`https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`}
+                  alt=""
+                />
+              );
+            })}
           </div>
         </div>
       </div>

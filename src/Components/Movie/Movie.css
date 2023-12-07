@@ -1,7 +1,50 @@
 .movie-container {
   width: 80vw;
-  display: flex;
-  justify-content: center;
+
   padding: 3em;
   background-color: white;
+}
+
+.movie-title {
+  text-align: center;
+}
+
+.movie-links {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  list-style-type: none;
+  gap: 1em;
+  padding: 0;
+}
+
+.movie-links > li > a {
+  text-decoration: none;
+  color: black;
+}
+
+.movie-general-container {
+  display: flex;
+  gap: 2em;
+}
+
+.movie-image {
+  width: 10em;
+}
+
+.movie-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.casting-images {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.casting-title {
+  text-align: center;
 }
