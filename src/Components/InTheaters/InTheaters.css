@@ -1,0 +1,20 @@
+.in-theaters-container {
+  text-align: center;
+}
+
+.in-theaters-title {
+  padding: 1em;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.in-theaters-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.in-theaters-card-item {
+  cursor: pointer;
+}

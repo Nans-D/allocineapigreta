@@ -1,0 +1,7 @@
+.in-theaters-app {
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  padding: 3em;
+  background-color: white;
+}
