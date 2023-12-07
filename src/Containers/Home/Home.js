@@ -1,6 +1,6 @@
 import "./Home.css";
-import InTheaters from "../InTheaters/InTheaters";
-import PopularsMovies from "../PopularsMovies/PopularsMovies";
+import InTheaters from "../../Components/InTheaters/InTheaters";
+import PopularsMovies from "../../Components/PopularsMovies/PopularsMovies";
 
 const Home = () => {
   return (

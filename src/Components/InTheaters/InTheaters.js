@@ -21,11 +21,7 @@ const InTheaters = () => {
       <div className="in-theaters-cards">
         {data.map((item, index) => {
           return (
-            <div
-              onClick={() => {}}
-              className="in-theaters-card-item"
-              key={index}
-            >
+            <div className="in-theaters-card-item" key={index}>
               <Card
                 id={item.id}
                 img={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`}

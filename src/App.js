@@ -1,13 +1,15 @@
 import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Movie from "./Components/Movie/Movie";
-import Home from "./Components/Home/Home";
+import Movie from "./Containers/Movie/Movie";
+import Home from "./Containers/Home/Home";
 import Header from "./Components/Header/Header";
+import ScrollToTop from "./Components/ScrollToTop";
 
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop></ScrollToTop>
       <div className="app-container">
         <Header></Header>
         <Routes>
