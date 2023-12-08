@@ -110,6 +110,8 @@
 .similar-movies-cards {
   gap: 1em;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .similar-movies-item {
   width: 10em;
