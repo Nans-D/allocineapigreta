@@ -6,6 +6,8 @@ import CardMovie from "../../Components/CardMovie/CardMovie";
 const Actor = () => {
   const [actorMovies, setActorMovies] = useState([]);
   const [actor, setActor] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const moviesPerPage = 12;
   const { id } = useParams();
 
   useEffect(() => {
@@ -27,6 +29,10 @@ const Actor = () => {
     };
     ActorFetch();
   }, [id]);
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+  const currentMovies = actorMovies.slice(indexOfFirstMovie, indexOfLastMovie);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="actor-container">
@@ -46,7 +52,7 @@ const Actor = () => {
       </div>
       <div className="actor-cards-container">
         <div className="actor-card-items">
-          {actorMovies.slice(0, 12).map((item) => {
+          {currentMovies.map((item) => {
             return (
               <CardMovie
                 id={item.id}
@@ -56,6 +62,12 @@ const Actor = () => {
             );
           })}
         </div>
+      </div>
+      <div>
+        <button onClick={() => paginate(1)}>1</button>
+        <button onClick={() => paginate(2)}>2</button>
+        <button onClick={() => paginate(3)}>3</button>
+        <button onClick={() => paginate(4)}>4</button>
       </div>
     </div>
   );
