@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./Movie.css";
-import Card from "../../Components/Card/Card";
+import CardMovie from "../../Components/CardMovie/CardMovie";
+import CardActor from "../../Components/CardActor/CardActor";
 
 const Movie = () => {
   const [movieData, setMovieData] = useState({});
@@ -40,7 +41,6 @@ const Movie = () => {
       );
       const responseApi = await response.json();
       setSimilarMoviesData(responseApi.results);
-      console.log(responseApi.results);
     };
     similarMoviesFetch();
     castingFetch();
@@ -60,7 +60,7 @@ const Movie = () => {
               <a href="#casting">Casting</a>
             </li>
             <li>
-              <a href="">Films Similaires</a>
+              <a href="#similar-movies">Films Similaires</a>
             </li>
           </ul>
         </div>
@@ -72,11 +72,13 @@ const Movie = () => {
           />
           <div className="movie-description">
             <div>Date de sortie : {movieData.release_date}</div>
-            <div>
-              Casting :{" "}
-              {castingData.map((item) => {
-                return `${item.name}, `;
-              })}
+            <div className="movie-description-casting">
+              <div className="movie-description-casting-text">
+                Casting :{" "}
+                {castingData.map((item) => {
+                  return `${item.name}, `;
+                })}
+              </div>
             </div>
             <div>
               <strong>Synopsis</strong>
@@ -84,6 +86,7 @@ const Movie = () => {
             </div>
           </div>
         </div>
+        {/* CASTING  */}
         <div className="casting-container">
           <h1 id="casting" className="casting-title">
             Casting
@@ -91,29 +94,36 @@ const Movie = () => {
           <div className="casting-informations">
             {castingData.map((item) => {
               return (
-                <div>
-                  <img
+                <div className="casting-cards">
+                  <CardActor
+                    id={item.id}
+                    img={`https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`}
+                    name={item.name}
+                    character={item.character}
+                  ></CardActor>
+                  {/* <img
                     src={`https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`}
                     alt=""
                   />
                   <div className="casting-name">{item.name}</div>
-                  <div className="casting-character">{item.character}</div>
+                  <div className="casting-character">{item.character}</div> */}
                 </div>
               );
             })}
           </div>
         </div>
         <div className="similar-movies-container">
-          <h1>Films Similaires</h1>
+          <h1 id="similar-movies">Films Similaires</h1>
           <div className="similar-movies-cards">
             {similarMoviesData.map((item, index) => {
               return (
-                <div key={index} className="similar-movies-item">
-                  <Card
+                <div key={index}>
+                  <CardMovie
+                    className="similar-movies-item"
                     id={item.id}
                     img={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                    // title={item.original_title}
-                  ></Card>
+                    title={item.original_title}
+                  ></CardMovie>
                   {/* <img
                     className="similar-movies-item"
                     src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}

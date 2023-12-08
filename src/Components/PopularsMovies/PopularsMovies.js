@@ -1,5 +1,5 @@
 import "./PopularsMovies.css";
-import Card from "../Card/Card";
+import CardMovie from "../CardMovie/CardMovie";
 import { useEffect, useState } from "react";
 const PopularsMovies = () => {
   const [data, setData] = useState([]);
@@ -24,11 +24,11 @@ const PopularsMovies = () => {
         {data.map((item, index) => {
           return (
             <div className="populars-movies-card-item" key={index}>
-              <Card
+              <CardMovie
                 id={item.id}
                 img={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`}
-                // title={item.original_title}
-              ></Card>
+                title={item.original_title}
+              ></CardMovie>
             </div>
           );
         })}

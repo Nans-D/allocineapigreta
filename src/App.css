@@ -8,8 +8,16 @@ body {
 }
 
 .app-container {
-  background-color: #ffc53d;
+  background: linear-gradient(to bottom right, #0d2847, #9a5cd0);
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+h1 {
+  background: linear-gradient(to bottom right, #0d2847, #9a5cd0);
+  padding: 0.5em 1em;
+  border-radius: 10px;
+  display: inline-block; /* Pour réduire la largeur au contenu */
+  color: white;
 }

@@ -1,5 +1,5 @@
 import "./InTheaters.css";
-import Card from "../Card/Card";
+import CardMovie from "../CardMovie/CardMovie";
 import { useState, useEffect } from "react";
 const InTheaters = () => {
   const [data, setData] = useState([]);
@@ -22,11 +22,11 @@ const InTheaters = () => {
         {data.map((item, index) => {
           return (
             <div className="in-theaters-card-item" key={index}>
-              <Card
+              <CardMovie
                 id={item.id}
                 img={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`}
-                // title={item.original_title}
-              ></Card>
+                title={item.original_title}
+              ></CardMovie>
             </div>
           );
         })}

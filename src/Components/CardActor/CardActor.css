@@ -1,0 +1,40 @@
+.card-actor-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-actor-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.card-actor-name {
+  font-size: 0.7em;
+  font-weight: bold;
+  text-decoration: none !important;
+  color: black;
+}
+
+.card-actor-character {
+  font-size: 0.7em;
+  text-decoration: none;
+  font-weight: bold;
+  color: grey;
+}
+
+.card-actor-link {
+  text-decoration: none;
+}
+
+.white-card-actor {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255, 0.5);
+  z-index: 1;
+}
