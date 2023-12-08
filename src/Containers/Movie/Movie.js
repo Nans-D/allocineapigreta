@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilm } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import { faVideo } from "@fortawesome/free-solid-svg-icons";
+import defaultProfileImg from "../../Assets/Images/logo.png";
 
 const Movie = () => {
   const [movieData, setMovieData] = useState({});
@@ -18,7 +19,7 @@ const Movie = () => {
     castingData.length = 12;
   }
   if (similarMoviesData.length > 0) {
-    similarMoviesData.length = 5;
+    similarMoviesData.length = 12;
   }
 
   useEffect(() => {
@@ -109,11 +110,15 @@ const Movie = () => {
           </h1>
           <div className="casting-informations">
             {castingData.map((item) => {
+              const actorImage = item.profile_path
+                ? `https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`
+                : defaultProfileImg; // Utilisez l'image de remplacement si profile_path est null
+              console.log(item.profile_path);
               return (
                 <div className="casting-cards">
                   <CardActor
                     id={item.id}
-                    img={`https://image.tmdb.org/t/p/w138_and_h175_face/${item.profile_path}`}
+                    img={actorImage}
                     name={item.name}
                     character={item.character}
                   ></CardActor>

@@ -89,6 +89,11 @@
   font-weight: bold;
   text-decoration: none;
 } */
+.casting-cards img {
+  width: 138px; /* Largeur fixe */
+  height: 175px; /* Hauteur fixe */
+  object-fit: cover; /* Assure que l'image couvre la zone définie sans être déformée */
+}
 
 .casting-character {
   font-size: 0.7em;
