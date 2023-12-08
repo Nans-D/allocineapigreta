@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import "./Movie.css";
 import CardMovie from "../../Components/CardMovie/CardMovie";
 import CardActor from "../../Components/CardActor/CardActor";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilm } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
 
 const Movie = () => {
   const [movieData, setMovieData] = useState({});
@@ -51,20 +55,32 @@ const Movie = () => {
     <div>
       <div className="movie-container">
         <h1 className="movie-title">{movieData.original_title}</h1>
-        <div>
+        <div className="movie-links-container">
           <ul className="movie-links">
-            <li>
-              <a href="">Fiche</a>
-            </li>
-            <li>
-              <a href="#casting">Casting</a>
-            </li>
-            <li>
-              <a href="#similar-movies">Films Similaires</a>
-            </li>
+            <a href="#fiche">
+              <li className="movie-links-child">
+                <FontAwesomeIcon icon={faFilm} className="faFilm-icon" />
+                Fiche
+              </li>
+            </a>
+            <a href="#casting">
+              <li className="movie-links-child">
+                <FontAwesomeIcon
+                  icon={faCircleUser}
+                  className="faCircleUser-icon"
+                />
+                Casting
+              </li>
+            </a>
+            <a href="#similar-movies">
+              <li className="movie-links-child">
+                <FontAwesomeIcon icon={faVideo} className="faMovie-icon" />
+                Films Similaires
+              </li>
+            </a>
           </ul>
         </div>
-        <div className="movie-general-container">
+        <div id="fiche" className="movie-general-container">
           <img
             className="movie-image"
             src={`https://image.tmdb.org/t/p/w500/${movieData.poster_path}`}

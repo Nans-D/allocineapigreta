@@ -11,18 +11,37 @@
   justify-content: center;
 }
 
-.movie-links {
+.movie-links-container {
   display: flex;
-  width: 100%;
   justify-content: center;
+  color: white;
+}
+
+.movie-links {
+  display: inline-flex;
   list-style-type: none;
   gap: 1em;
   padding: 0;
+  background-color: #0d2847;
+  border-radius: 10px;
+}
+.movie-links-child {
+  border-radius: 10px;
+  padding: 1em 2em;
+}
+.movie-links-child:hover {
+  background: linear-gradient(to bottom right, #0d2847, #9a5cd0);
 }
 
-.movie-links > li > a {
+.faFilm-icon,
+.faCircleUser-icon,
+.faMovie-icon {
+  padding: 0 0.5em;
+}
+
+.movie-links > a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 .movie-general-container {

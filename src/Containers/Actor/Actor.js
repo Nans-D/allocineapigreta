@@ -52,7 +52,9 @@ const Actor = () => {
           {actorMovies.map((item) => {
             return (
               <CardMovie
-                img={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
+                id={item.id}
+                img={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${item.poster_path}`}
+                title={item.original_title}
               ></CardMovie>
             );
           })}
