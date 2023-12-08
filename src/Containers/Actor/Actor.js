@@ -7,10 +7,7 @@ const Actor = () => {
   const [actorMovies, setActorMovies] = useState([]);
   const [actor, setActor] = useState({});
   const { id } = useParams();
-  let numberOfMovies = 0;
-  for (let i = 0; i < actorMovies.length; i++) {
-    numberOfMovies = i;
-  }
+
   useEffect(() => {
     const ActorMovieFetch = async () => {
       const response = await fetch(
@@ -45,11 +42,11 @@ const Actor = () => {
           <div className="actor-birthday-title">Date de naissance</div>
           <div className="actor-birthday-date">{actor.birthday}</div>
         </div>
-        <div>A joué dans {numberOfMovies} films</div>
+        <div>A joué dans {actorMovies.length} films</div>
       </div>
       <div className="actor-cards-container">
         <div className="actor-card-items">
-          {actorMovies.map((item) => {
+          {actorMovies.slice(0, 12).map((item) => {
             return (
               <CardMovie
                 id={item.id}
