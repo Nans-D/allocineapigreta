@@ -63,7 +63,7 @@ const Actor = () => {
           })}
         </div>
       </div>
-      <div>
+      <div className="btn-paginate">
         <button onClick={() => paginate(1)}>1</button>
         <button onClick={() => paginate(2)}>2</button>
         <button onClick={() => paginate(3)}>3</button>

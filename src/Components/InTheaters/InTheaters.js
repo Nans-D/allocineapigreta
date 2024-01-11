@@ -2,7 +2,13 @@ import "./InTheaters.css";
 import CardMovie from "../CardMovie/CardMovie";
 import { useState, useEffect } from "react";
 const InTheaters = () => {
+  const moviesPerPage = 6;
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+  const currentMovies = data.slice(indexOfFirstMovie, indexOfLastMovie);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +25,7 @@ const InTheaters = () => {
     <div className="in-theaters-container">
       <p className="in-theaters-title">In Theaters</p>
       <div className="in-theaters-cards">
-        {data.map((item, index) => {
+        {currentMovies.map((item, index) => {
           return (
             <div className="in-theaters-card-item" key={index}>
               <CardMovie
@@ -30,6 +36,12 @@ const InTheaters = () => {
             </div>
           );
         })}
+      </div>
+      <div className="btn-paginate">
+        <button onClick={() => paginate(1)}>1</button>
+        <button onClick={() => paginate(2)}>2</button>
+        <button onClick={() => paginate(3)}>3</button>
+        <button onClick={() => paginate(4)}>4</button>
       </div>
     </div>
   );

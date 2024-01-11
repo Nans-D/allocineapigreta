@@ -6,6 +6,7 @@
   justify-content: center;
   background-color: white;
   border-radius: 20px;
+  margin-bottom: 1em;
 }
 .actor-description {
   margin: 2em;
@@ -42,4 +43,22 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.btn-paginate {
+  display: flex;
+  justify-content: center;
+  margin: 1em;
+  gap: 1em;
+}
+
+.btn-paginate > button {
+  padding: 1em;
+  border: none;
+}
+
+.btn-paginate > button:hover {
+  background-color: #2870bd;
+  color: white;
+  cursor: pointer;
 }

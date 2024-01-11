@@ -3,6 +3,8 @@ import CardMovie from "../CardMovie/CardMovie";
 import { useEffect, useState } from "react";
 const PopularsMovies = () => {
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const moviesPerPage = 6;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,12 +18,16 @@ const PopularsMovies = () => {
     };
     fetchData();
   }, []);
+  const indexOfLastMovie = currentPage * moviesPerPage;
+  const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+  const currentMovies = data.slice(indexOfFirstMovie, indexOfLastMovie);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="populars-movies-container">
       <p className="populars-movies-title">Populars movies</p>
       <div className="populars-movies-cards">
-        {data.map((item, index) => {
+        {currentMovies.map((item, index) => {
           return (
             <div className="populars-movies-card-item" key={index}>
               <CardMovie
@@ -32,6 +38,12 @@ const PopularsMovies = () => {
             </div>
           );
         })}
+      </div>
+      <div className="btn-paginate">
+        <button onClick={() => paginate(1)}>1</button>
+        <button onClick={() => paginate(2)}>2</button>
+        <button onClick={() => paginate(3)}>3</button>
+        <button onClick={() => paginate(4)}>4</button>
       </div>
     </div>
   );
